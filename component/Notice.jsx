@@ -1,6 +1,7 @@
+import Link from 'next/link'
 import React from 'react'
 
-const Notice = ({note}) => {
+const Notice = ({ note }) => {
     return (
         <article
             key={note.id}
@@ -33,6 +34,16 @@ const Notice = ({note}) => {
             </p>
 
             <div className="absolute flex bottom-4 right-4 text-4xl">
+                <Link
+                    href={{
+                        pathname: `/notice/${note.id}`,
+                        // query: note,
+                    }}
+                >
+                    <div className="opacity-55 hover:opacity-100 hover:cursor-pointer">
+                        🔍
+                    </div>
+                </Link>
                 <div className="opacity-55 hover:opacity-100 hover:cursor-pointer">
                     ✏️
                 </div>
