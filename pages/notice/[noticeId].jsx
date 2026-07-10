@@ -1,14 +1,13 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react'
 
-const NoticePage = () => {
-    const note = {
-        id: 1,
-        title: "🚀 Finish UI",
-        text: "Design the dashboard before Friday.",
-        color: "bg-yellow-200",
-        rotate: "-rotate-1",
-    }
+const NoticePage = ({note}) => {
+
+    const router = useRouter();
+
+    if(router?.isFallback) return (<h2>Loading...</h2>)
+    
     return (
         <div className='fixed inset-0 flex bg-[#c58c54] justify-center items-center'>
             <article
@@ -48,12 +47,6 @@ const NoticePage = () => {
                             🔙
                         </div>
                     </Link>
-                    <div className="opacity-55 hover:opacity-100 hover:cursor-pointer">
-                        ✏️
-                    </div>
-                    <div className="opacity-55 hover:opacity-100 hover:cursor-pointer">
-                        🗑️
-                    </div>
                 </div>
             </article>
         </div>
@@ -61,3 +54,44 @@ const NoticePage = () => {
 }
 
 export default NoticePage;
+
+// to tell what can the paths be; pov: no need for SSR
+// export const getStaticPaths = () => {
+//     return {
+//         paths: [
+//             {
+//                 params: {
+//                     noticeId: '1'
+//                 }
+//             }
+//         ],
+//         fallback: 'blocking' 
+//         // blocking: same as true but no fallback UI // to avoid fast loading flashes
+//         // true: show a fallback page (loading), until the new path is created
+//         // false: fixed paths (no loading for new notice)
+//     }
+// }
+
+// SSG * -> getStaticProps
+// SSR / -> getServerSideProps
+export const getServerSideProps = (context) => {
+    const { params, req, res } = context; // noteId
+    const noticeId = params?.noticeId;
+    // set cookies
+    res.setHeader('Set-Cookie', [`noteId=${noticeId}`])
+
+    const note = {
+        id: 1,
+        title: "🚀 Finish UI",
+        text: "Design the dashboard before Friday.",
+        color: "bg-yellow-200",
+        rotate: "-rotate-1",
+    }
+
+    return {
+        props: {
+            note: note,
+            noteId: noticeId
+        }
+    }
+}

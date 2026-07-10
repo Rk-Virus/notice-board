@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TextInput = ({ label, type = 'text', style, ...props }) => {
+const TextInput = ({ label, type = 'text', error, style, ...props }) => {
     const id = String(Math.random())
     return (
         <div>
@@ -11,6 +11,10 @@ const TextInput = ({ label, type = 'text', style, ...props }) => {
                 className={`border-b border-gray-500 outline-none w-full ${style}`}
                 {...props}
             />
+            {error ? (
+                <div className='text-red-500 text-sm'>{error}</div>
+            ) : null}
+
         </div>
     )
 }
