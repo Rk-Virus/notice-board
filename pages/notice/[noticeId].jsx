@@ -1,18 +1,19 @@
+import { fetchNotice } from '@/utils/ApiFunctions';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react'
 
-const NoticePage = ({note}) => {
+const NoticePage = ({ note }) => {
 
     const router = useRouter();
 
-    if(router?.isFallback) return (<h2>Loading...</h2>)
-    
+    if (router?.isFallback) return (<h2>Loading...</h2>)
+
     return (
         <div className='fixed inset-0 flex bg-[#c58c54] justify-center items-center'>
             <article
                 key={note.id}
-                className={`${note.color} ${note.rotate}
+                className={`${note?.color} bg-amber-100 rotate-${Math.floor(Math.random() * 4) + 1}
                 relative min-h-155
                 w-240
                 rounded-xl
@@ -29,19 +30,37 @@ const NoticePage = ({note}) => {
             >
                 {/* Pin */}
                 <div className="absolute left-1/2 top-3 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-black bg-red-500 shadow-lg" />
-                {/* <div className="absolute left-1/2 top-3 -translate-x-1/2" >
-                📌
-            </div> */}
 
                 <h2 className="mt-6 text-2xl font-black">
-                    {note.title}
+                    {note?.title}
                 </h2>
 
+                {/* Category & Priority */}
+                <div className="mt-3 flex items-center gap-2 text-sm font-bold">
+                    <span className="rounded-full border-2 border-black bg-white px-3 py-1">
+                        {note?.category}
+                    </span>
+
+                    <span
+                        className={`rounded-full border-2 border-black px-3 py-1 ${note?.priority === "Urgent"
+                            ? "bg-red-300"
+                            : "bg-green-300"
+                            }`}
+                    >
+                        {note?.priority}
+                    </span>
+                </div>
+
                 <p className="mt-4 text-lg leading-7 text-zinc-800">
-                    {note.text}
+                    {note?.body?.slice(0, 48)} {note?.body?.slice(0, 48) === note?.body?.length && "..."}
                 </p>
 
-                <div className="absolute flex bottom-4 right-4 text-4xl">
+                {/* Publish Date */}
+                <p className="mt-4 text-sm font-semibold text-zinc-700">
+                    📅 {new Date(note.publishDate).toISOString().split("T")[0]}
+                </p>
+
+                <div className="absolute bottom-4 right-4 flex text-4xl">
                     <Link href={`/`} >
                         <div className="opacity-55 hover:opacity-100 hover:cursor-pointer">
                             🔙
@@ -74,23 +93,21 @@ export default NoticePage;
 
 // SSG * -> getStaticProps
 // SSR / -> getServerSideProps
-export const getServerSideProps = (context) => {
+export const getServerSideProps = async (context) => {
     const { params, req, res } = context; // noteId
     const noticeId = params?.noticeId;
-    // set cookies
-    res.setHeader('Set-Cookie', [`noteId=${noticeId}`])
 
-    const note = {
-        id: 1,
-        title: "🚀 Finish UI",
-        text: "Design the dashboard before Friday.",
-        color: "bg-yellow-200",
-        rotate: "-rotate-1",
-    }
+    // const notice = await fetchNotice(noticeId) // got error
+    // fix
+    const notice = await prisma.notice.findUnique({
+        where: {
+            id: Number(params.noticeId),
+        },
+    });
 
     return {
         props: {
-            note: note,
+            note: JSON.parse(JSON.stringify(notice)),
             noteId: noticeId
         }
     }

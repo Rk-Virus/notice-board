@@ -1,23 +1,42 @@
 export const notices = [
-    {
-        id: 1,
-        title: "🚀 Finish UI",
-        text: "Design the dashboard before Friday.",
-        color: "bg-yellow-200",
-        rotate: "-rotate-3",
-    },
-    {
-        id: 2,
-        title: "☕ Coffee Break",
-        text: "Remember to stretch and hydrate.",
-        color: "bg-pink-200",
-        rotate: "rotate-2",
-    },
-    {
-        id: 3,
-        title: "📌 Meeting",
-        text: "Team sync at 4:00 PM.",
-        color: "bg-green-200",
-        rotate: "-rotate-2",
-    }
-]
+  {
+    id: 1,
+    title: "Upcoming Math Exam",
+    body: "The Mathematics midterm exam will be conducted on 15th August at 10:00 AM in Hall A.",
+    category: "Exam",
+    priority: "Urgent",
+    publishDate: "2026-08-10",
+  },
+  {
+    id: 2,
+    title: "Annual Tech Fest",
+    body: "Join us for the annual tech fest featuring coding competitions, workshops, and guest speakers.",
+    category: "Event",
+    priority: "Normal",
+    publishDate: "2026-08-05",
+  },
+  {
+    id: 3,
+    title: "Library Maintenance",
+    body: "The library will remain closed on Sunday due to scheduled maintenance work.",
+    category: "General",
+    priority: "Normal",
+    publishDate: "2026-08-08",
+  },
+  {
+    id: 4,
+    title: "Placement Drive",
+    body: "ABC Technologies will conduct an on-campus placement drive next Monday. Eligible students should register before Friday.",
+    category: "Event",
+    priority: "Urgent",
+    publishDate: "2026-08-12",
+  },
+  {
+    id: 5,
+    title: "Semester Results",
+    body: "Semester examination results will be published on the student portal at 5:00 PM.",
+    category: "Exam",
+    priority: "Urgent",
+    publishDate: "2026-08-18",
+  },
+];
