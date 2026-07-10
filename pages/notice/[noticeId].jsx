@@ -1,3 +1,4 @@
+import { prisma } from '@/lib/prisma';
 import { fetchNotice } from '@/utils/ApiFunctions';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -12,7 +13,7 @@ const NoticePage = ({ note }) => {
     return (
         <div className='fixed inset-0 flex bg-[#c58c54] justify-center items-center'>
             <article
-                key={note.id}
+                key={note?.id}
                 className={`${note?.color} bg-amber-100 rotate-${Math.floor(Math.random() * 4) + 1}
                 relative min-h-155
                 w-240
