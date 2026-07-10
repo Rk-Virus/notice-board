@@ -52,7 +52,7 @@ const Notice = ({ note }) => {
                     📅 {new Date(note.publishDate).toISOString().split("T")[0]}
                 </p>
 
-                <div className="flex justify-end flex text-4xl">
+                <div className="flex justify-end text-4xl">
                     <Link href={`/notice/${note?.id}`}>
                         <div className="opacity-55 hover:cursor-pointer hover:opacity-100">
                             🔍
