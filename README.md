@@ -16,25 +16,34 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## One thing I could improve with more time
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Given more time, I would further improve the project by:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+- Add the **bonus Image** attribute to notices.
+- Improve animations and interactions, such as:
+  - Zoom-in transition when opening a notice.
+  - Smooth zoom-out animation when navigating back.
+  - More polished board interactions.
+- Add **search** and **filters** based on Category and Priority.
+- Improve the overall code quality, project structure, and component reusability.
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Where AI was used
 
-To learn more about Next.js, take a look at the following resources:
+AI was used as a development assistant for:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+- Helping transform the initial UI into a more realistic notice board design.
+- Debugging issues when I got stuck (for example, integrating SWR with Axios and resolving Next.js-related issues).
+- Quickly finding relevant documentation, comparing implementation strategies, and accelerating learning during development.
+- Finally, formatting these final points in this ReadMe, as I would mess it up in the last minutes.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Additionally, I referred to:
 
-## Deploy on Vercel
+- Google Search (AI Overview)
+- Stack Overflow
+- docs for packages formik, prisma, TiDB, and other bloggers out there as example usecases
+- The YouTube tutorial mentioned in the assignment document for a quick Next.js revision.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+AI assistance was used to speed up development and problem-solving, while the implementation decisions and integration were completed as part of the project.
