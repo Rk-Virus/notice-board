@@ -38,6 +38,7 @@ AI was used as a development assistant for:
 - Debugging issues when I got stuck (for example, integrating SWR with Axios and resolving Next.js-related issues).
 - Quickly finding relevant documentation, comparing implementation strategies, and accelerating learning during development.
 - Finally, formatting these final points in this ReadMe, as I would mess it up in the last minutes.
+- Maybe I could not see much validation in routing, as it was done in prisma (backend) and Yup (frontend)
 
 Additionally, I referred to:
 
