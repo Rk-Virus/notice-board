@@ -17,6 +17,7 @@ const NoticePage = ({ note }) => {
                 className={`${note?.color} bg-amber-100 rotate-${Math.floor(Math.random() * 4) + 1}
                 relative min-h-155
                 w-240
+                mx-10
                 rounded-xl
                 border-4
                 border-black

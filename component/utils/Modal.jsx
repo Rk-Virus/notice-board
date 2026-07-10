@@ -9,10 +9,12 @@ const Modal = ({ isOpen, setIsOpen, children }) => {
                 // key={note.id}
                 className={`bg-white
                 relative min-h-55
+                px-8
                 rounded-xl
                 border-4
                 border-black
                 p-6
+                mx-6
                 shadow-[8px_8px_0px_#000]
                 transition-all
                 duration-300
