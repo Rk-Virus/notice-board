@@ -13,7 +13,7 @@ const Notice = ({ note }) => {
         <>
             <article
                 key={note.id}
-                className={`${note?.color} bg-amber-100 rotate-${Math.floor(Math.random() * 4) + 1}
+                className={`${note?.color} bg-amber-100 rotate-${note?.rotation || 5}
                 relative min-h-55 rounded-xl border-4 border-black p-6
                 shadow-[8px_8px_0px_#000] transition-all duration-300
                 hover:rotate-0 hover:-translate-y-2

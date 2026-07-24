@@ -1,9 +1,6 @@
 import BoardSWR from "@/component/BoardSWR";
-import Notice from "@/component/Notice";
 import Button from "@/component/utils/Button";
-import Modal from "@/component/utils/Modal";
 import NoticeModal from "@/component/NoticeModal";
-import TextInput from "@/component/utils/TextInput";
 import { notices } from "@/data/notices";
 import { Geist, Geist_Mono } from "next/font/google";
 import { useState } from "react";
