@@ -1,10 +1,12 @@
 import React from 'react'
 
 const TextInput = ({ label, type = 'text', error, style, ...props }) => {
-    const id = String(Math.random())
+    // const id = String(Math.random())
     return (
         <div>
-            {label && <label htmlFor={id}></label>}
+            {label && <label 
+            // htmlFor={id}
+            ></label>}
             <input
                 id={id}
                 type={type}

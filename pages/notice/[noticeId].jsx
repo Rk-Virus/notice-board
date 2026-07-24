@@ -14,7 +14,7 @@ const NoticePage = ({ note }) => {
         <div className='fixed inset-0 flex bg-[#c58c54] justify-center items-center'>
             <article
                 key={note?.id}
-                className={`${note?.color} bg-amber-100 rotate-${Math.floor(Math.random() * 4) + 1}
+                className={`${note?.color} bg-amber-100 rotate-${note?.rotation || 5}
                 relative min-h-155
                 w-240
                 mx-10
@@ -109,7 +109,7 @@ export const getServerSideProps = async (context) => {
 
     return {
         props: {
-            note: JSON.parse(JSON.stringify(notice)),
+            note: {...JSON.parse(JSON.stringify(notice)), rotation: Math.floor(Math.random() * 4) + 1},
             noteId: noticeId
         }
     }
